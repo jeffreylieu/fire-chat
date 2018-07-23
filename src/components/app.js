@@ -1,11 +1,15 @@
 import React from 'react';
 import 'materialize-css/dist/css/materialize.min.css';
 import '../assets/css/app.css';
+import {Route} from 'react-router-dom';
+import ChatRoom from './chat_room';
+import Home from './home';
 
 const App = () => (
     <div>
         <div className="container">
-            <h1 className="center">Fire Chat</h1>
+            <Route exact path="/" component={Home}/>
+            <Route path="/chat-room" component={ChatRoom}/>
         </div>
     </div>
 );
