@@ -13,9 +13,10 @@ export default (WrappedComponent) => {
         }
 
         sendMessage = (msg) => {
-            console.log('From DB HOC:', msg);
+            const {user} = this.props;
             const newMsg = {
-                name: 'Jake',
+                name: user.name || 'Guest',
+                color: user.color || '#000000',
                 message: msg,
                 timestamp: new Date().getTime()
             };
@@ -31,7 +32,8 @@ export default (WrappedComponent) => {
 
     function mapsStateToProps(state) {
         return{
-            messages: state.chat.messages
+            messages: state.chat.messages,
+            user: state.chat.user
         }
     }
 
