@@ -3,13 +3,22 @@ import {connect} from 'react-redux';
 import { setUserData } from '../actions';
 
 
-class ChooseName extends Component {
-    state = {
-        name: '',
-        color: '#ffffff',
-        error: ''
 
+class ChooseName extends Component {
+
+    constructor (props){
+        super(props);
+
+        const user = JSON.parse(localStorage.getItem('user')) || {};
+
+        this.state = {
+            name: user.name || '',
+            color: user.color || '#ffffff',
+            error: ''
+        }
     }
+
+
 
 
     handleSubmit = (event) => {
@@ -22,9 +31,8 @@ class ChooseName extends Component {
             });
 
         }
-
-
         this.props.setUserData({name, color});
+
     }
 
     render(){

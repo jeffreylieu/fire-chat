@@ -9,7 +9,7 @@ const DEFAULT_STATE = {
 export default (state = DEFAULT_STATE, action) => {
     switch(action.type){
         case types.UPDATE_CHAT_MESSAGES:
-            return{...state, messages: action.messages };
+            return {...state, messages: action.messages };
         case types.SET_USER_DATA:
             return {...state, user: action.payload};
         default:

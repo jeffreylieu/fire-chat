@@ -9,8 +9,18 @@ export default (WrappedComponent) => {
 
 
         componentDidMount(){
+            this.deleteOld();
             this.dbRef.orderBy('timestamp').onSnapshot(this.props.updateChatMessages);
         }
+        deleteOld(){
+            const time = Date.now() -  (2 * 60 * 60 * 1000);
+            this.dbRef.orderBy('timestamp').where("timestamp", "<", time)
+                .onSnapshot(function(querySnapshot){
+                    querySnapshot.forEach(function(doc){
+                        firebase.collection('expense-log').doc(`${doc.id}`).delete();
+                    })
+                })
+        };
 
         sendMessage = (msg) => {
             const {user} = this.props;
@@ -20,7 +30,6 @@ export default (WrappedComponent) => {
                 message: msg,
                 timestamp: new Date().getTime()
             };
-
             this.dbRef.add(newMsg);
         }
 
