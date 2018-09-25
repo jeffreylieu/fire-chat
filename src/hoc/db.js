@@ -9,18 +9,11 @@ export default (WrappedComponent) => {
 
 
         componentDidMount(){
-            this.deleteOld();
+
             this.dbRef.orderBy('timestamp').onSnapshot(this.props.updateChatMessages);
+            // this.deleteOld();
         }
-        deleteOld(){
-            const time = Date.now() -  (2 * 60 * 60 * 1000);
-            this.dbRef.orderBy('timestamp').where("timestamp", "<", time)
-                .onSnapshot(function(querySnapshot){
-                    querySnapshot.forEach(function(doc){
-                        firebase.collection('expense-log').doc(`${doc.id}`).delete();
-                    })
-                })
-        };
+
 
         sendMessage = (msg) => {
             const {user} = this.props;
@@ -31,11 +24,27 @@ export default (WrappedComponent) => {
                 timestamp: new Date().getTime()
             };
             this.dbRef.add(newMsg);
+        };
+
+        removeMessage = (msg) => {
+            debugger;
+            console.log(this.dbRef.doc(msg.id));
+            this.dbRef.doc(msg.id).delete();
         }
+        // put debugger here and look through what this function is and does.
+        // deleteOld(){
+        //     const time = Date.now() -  (2 * 60 * 60 * 1000);
+        //     this.dbRef.orderBy('timestamp').where("timestamp", "<", time)
+        //         .onSnapshot(function(querySnapshot){
+        //             querySnapshot.forEach(function(doc){
+        //                 firebase.collection('expense-log').doc(`${doc.id}`).delete();
+        //             })
+        //         })
+        // };
 
 
         render(){
-            return <WrappedComponent {...this.props} sendMessage={this.sendMessage}/>
+            return <WrappedComponent {...this.props} removeMessage={this.removeMessage} sendMessage={this.sendMessage}/>
         }
     }
 
