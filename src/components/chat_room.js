@@ -15,6 +15,8 @@ const ChatRoom = props =>{
                 <div className="col s11">
                     {msg.message}
                 </div>
+                <button onClick={()=> props.removeMessage(msg)}>Delete</button>
+
             </li>
         )
     });
