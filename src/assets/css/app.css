@@ -1,0 +1,29 @@
+.collection-item{
+    display: flex;
+}
+
+
+.row .col.s1{
+    width: 25%;
+    margin-left: auto;
+    left: auto;
+    right: auto;
+}
+
+.gobackchatroom {
+    display: flex;
+}
+
+
+@media only screen and (min-width: 414px){
+    nav .brand-logo{
+        left: 17%;
+        transform: translateX(-50%);
+    }
+}
+
+@media only screen and (max-width: 412px){
+    li{
+        display: none;
+    }
+}

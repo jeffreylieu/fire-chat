@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import { setUserData } from '../actions';
+import ChatRoom from "./chat_room";
+import {Link, Route} from "react-router-dom";
 
 
 
@@ -65,7 +67,7 @@ class ChooseName extends Component {
                     </div>
                     <div className="row">
                         <div className="col s8 offset-s2">
-                            <label>Favorite Color</label>
+                            <label>Choose Favorite Color</label>
                             <input
                                 style={colorStyle}
                                 type="color"
@@ -76,21 +78,26 @@ class ChooseName extends Component {
                             />
                         </div>
                     </div>
-                    <div className="row">
-                        <div className="col s8 offset-s2 right-align">
-                            <button className="btn blue-grey">Set Preferences</button>
+                    <div className="buttons">
+                        <div className="row">
+                            <div className="col s6 offset-s2 right-left">
+                                <button className="btn blue-grey">Set Preferences</button>
+                            </div>
                         </div>
-
-                    </div>
-                    <div className="row">
-                        <div className="col s8 offset-s2">
-                            <p className="right-align red-text">
-                                {error}
-                            </p>
+                        <div className="row">
+                            <div className="col s6 offset-s2 right-right gobackchatroom">
+                                <Link to="/chat-room" className="btn green">Chat Room</Link>
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="col s8 offset-s2">
+                                <p className="right-align red-text">
+                                    {error}
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </form>
-
             </div>
         )
     }
