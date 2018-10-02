@@ -27,8 +27,8 @@ const ChatRoom = props =>{
 
             <h1 className="center">Chat Room</h1>
             <MessageInput send={props.sendMessage}/>
-            <div>
-                <Link to="/choose-name" className="btn red">Change Name</Link>
+            <div className="setname">
+                <Link to="/choose-name" className="btn red">Choose Name</Link>
             </div>
             <ul className="collection">
                 {messageElements}

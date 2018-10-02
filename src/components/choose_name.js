@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import { setUserData } from '../actions';
-import ChatRoom from "./chat_room";
+import ChatRoom from './chat_room';
 import {Link, Route} from "react-router-dom";
 
 
@@ -43,7 +43,6 @@ class ChooseName extends Component {
             width: '100%',
             border: 'none',
             boxShadow: '0 2px 2px 0 rgba(0, 0, 0, 0.14)'
-
         }
 
         const { color , name, error } = this.state;
