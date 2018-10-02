@@ -10,7 +10,7 @@ export default (WrappedComponent) => {
 
         componentDidMount(){
             this.deleteOld();
-            this.dbRef.orderBy('timestamp').onSnapshot(this.props.updateChatMessages);
+            this.dbRef.orderBy('timestamp', 'desc').onSnapshot(this.props.updateChatMessages);
         }
 
 
@@ -29,9 +29,11 @@ export default (WrappedComponent) => {
             console.log(this.dbRef.doc(msg.id));
             this.dbRef.doc(msg.id).delete();
         }
-        // put debugger here and look through what this function is and does. 2 * 60 *
+
         deleteOld(){
+            // const time = Date.now() -  (2 * 60 * 60 * 1000);
             const time = Date.now() -  (60 * 1000);
+
             this.dbRef.orderBy('timestamp').where("timestamp", "<", time)
                 .onSnapshot(function(querySnapshot){
                     querySnapshot.forEach(function(msg){
