@@ -43,6 +43,14 @@
     .center{
         font-size: 3.2rem;
     }
+
+    .trashcan {
+        display: none;
+    }
+
+    .deleteButton {
+        display: inline;
+    }
 }
 
 @media only screen and (max-width: 412px){
@@ -52,4 +60,13 @@
     .center{
         font-size: 2.2rem;
     }
+    .trashcan{
+        display: inline;
+
+    }
+
+    .deleteButton {
+        display: none;
+    }
+
 }

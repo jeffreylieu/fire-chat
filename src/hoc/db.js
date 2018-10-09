@@ -31,8 +31,8 @@ export default (WrappedComponent) => {
         }
 
         deleteOld(){
-            // const time = Date.now() -  (2 * 60 * 60 * 1000);
-            const time = Date.now() -  (60 * 1000);
+            const time = Date.now() -  (2 * 60 * 60 * 1000);
+            // const time = Date.now() -  (60 * 1000);
 
             this.dbRef.orderBy('timestamp').where("timestamp", "<", time)
                 .onSnapshot(function(querySnapshot){
