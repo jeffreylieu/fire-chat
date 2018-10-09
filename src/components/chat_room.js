@@ -2,6 +2,7 @@ import React from 'react';
 import db from '../hoc/db';
 import MessageInput from './message_input';
 import {Link} from "react-router-dom";
+import trashCan from '../assets/images/trashcan.png';
 
 
 const ChatRoom = props =>{
@@ -16,8 +17,9 @@ const ChatRoom = props =>{
                 <div className="col s11">
                     {msg.message}
                 </div>
-                <div className="deletebutton">
-                    <button className="btn btn-link" onClick={() => props.removeMessage(msg)}>Delete</button>
+                <div className="deletebutton" onClick={() => props.removeMessage(msg)}>
+                    <img className="trashcan" src={trashCan}/>
+                    <button className="btn btn-link deleteButton">Delete</button>
                 </div>
             </li>
         )
